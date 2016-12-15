@@ -1,0 +1,27 @@
+@import 'app/styles/fonts';
+
+.container {
+  @include primary-font();
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrapper {
+  position: relative;
+}
+
+.header {
+  height: 48px;
+}
+
+.content {
+  flex: 1;
+  padding: 0px 50px;
+  position: relative;
+}

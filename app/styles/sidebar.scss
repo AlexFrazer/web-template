@@ -1,0 +1,8 @@
+@import 'app/styles/colors';
+
+.container {
+  height: 100%;
+  overflow-y: scroll;
+  position: absolute;
+  box-shadow: inset -1px 0px 6px 0px $shadow;
+}

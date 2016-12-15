@@ -1,0 +1,36 @@
+$height: 48px;
+
+.container {
+  display: flex;
+  height: $height;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 0px 5px #888888;
+}
+
+.control {
+  width: $height;
+  height: $height;
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  font-size: 18px;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu {
+  padding: 10px;
+  cursor: pointer;
+  transition: transform 100ms ease-in;
+}
+
+.menu:hover {
+  transform: scale(1.1);
+}

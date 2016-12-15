@@ -1,0 +1,5 @@
+@mixin primary-font($size: 12px, $weight: 500) {
+  font-size: $size;
+  font-weight: $weight;
+  font-family: 'PT Sans', sans-serif;
+}
