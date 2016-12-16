@@ -6,10 +6,11 @@
   "author": "Alex Frazer <alexadfrazer@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "node -r babel-register ./server",
+    "dev": "NODE_ENV=development node -r babel-register ./server",
     "build": "NODE_ENV=development node -r babel-register ./node_modules/.bin/webpack --config ./webpack.config.development.js"
   },
   "devDependencies": {
+    "argparse": "^1.0.9",
     "babel-core": "^6.20.0",
     "babel-loader": "^6.2.9",
     "babel-plugin-add-module-exports": "^0.2.1",

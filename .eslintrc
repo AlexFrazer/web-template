@@ -1,0 +1,99 @@
+{
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  {
+    "compilerOptions": { "target": "ES6", "module": "commonjs" }
+  },
+  "rules": {
+    "quotes": 0,
+    "no-unused-vars": 1,
+    "strict": 0,
+    "semi": [1, "always"],
+    "jsx-quotes": 0,
+    "no-console": 1,
+    "no-debugger": 1,
+    "no-extra-semi": 1,
+    "no-cond-assign": 1,             // disallow assignment in conditional expressions
+    "no-dupe-keys": 1,               // disallow duplicate keys when creating object literals
+    "no-ex-assign": 1,               // disallow assigning to the exception in a catch block
+    "no-extra-boolean-cast": 1,      // disallow double-negation boolean casts in a boolean context
+    "no-func-assign": 1,             // disallow overwriting functions written as function declarations
+    "no-invalid-regexp": 1,          // disallow invalid regular expression strings in the RegExp constructor
+    "no-negated-in-lhs": 1,          // disallow negation of the left operand of an in expression
+    "no-obj-calls": 1,               // disallow the use of object properties of the global object (Math and JSON) as functions
+    "no-regex-spaces": 1,            // disallow multiple spaces in a regular expression literal
+    "no-sparse-arrays": 1,           // disallow sparse arrays
+    "no-unreachable": 1,             // disallow unreachable statements after a return, throw, continue, or break statement
+    "use-isnan": 1,                  // disallow comparisons with the value NaN
+    "valid-typeof": 1,               // Ensure that the results of typeof are compared against a valid string
+    "keyword-spacing": 1,
+
+    // Best Practices
+    // These are rules designed to prevent you from making mistakes. They either prescribe a better way of doing something or help you avoid footguns.
+    "curly": 1,                      // specify curly brace conventions for all control statements
+    "dot-notation": 1,               // encourages use of dot notation whenever possible
+    "eqeqeq": 1,                     // require the use of === and !==
+    "no-caller": 1,                  // disallow use of arguments.caller or arguments.callee
+    "no-extend-native": 1,           // disallow adding to native types
+    "no-extra-bind": 1,              // disallow unnecessary function binding
+    "no-lone-blocks": 1,             // disallow unnecessary nested blocks
+    "no-loop-func": 0,               // disallow creation of functions within loops
+    "no-new": 1,                     // disallow use of new operator when not part of the assignment or comparison
+    "no-new-func": 1,                // disallow use of new operator for Function object
+    "no-new-wrappers": 1,            // disallows creating new instances of String,Number, and Boolean
+    "no-octal": 1,                   // disallow use of octal literals
+    "no-octal-escape": 1,            // disallow use of octal escape sequences in string literals, such as var foo = "Copyright \252";
+    "no-proto": 1,                   // disallow usage of __proto__ property
+    "no-return-assign": 0,           // disallow use of assignment in return statement
+    "no-script-url": 1,              // disallow use of javascript: urls.
+    "no-self-compare": 1,            // disallow comparisons where both sides are exactly the same (off by default)
+    "no-sequences": 1,               // disallow use of comma operator
+    "no-void": 1,                    // disallow use of void operator (off by default)
+
+    "camelcase": 0,                  // require camel case names
+    "no-trailing-spaces": 1,         // disallow trailing whitespace at the end of lines
+    "no-mixed-spaces-and-tabs": 1,   // disallow mixed spaces and tabs for indentation
+    "space-infix-ops": 1,            // require spaces around operators
+    "space-before-function-paren":  [1, "never"],
+    "space-before-blocks": 1,
+
+
+    // ES6
+    "arrow-spacing": 1,
+    "no-confusing-arrow": 1,
+    "no-const-assign": 1,
+    "no-dupe-class-members": 1,
+    "no-duplicate-imports": 1,
+
+
+    "react/display-name": 1,
+    "react/jsx-boolean-value": 0,
+    "react/jsx-curly-spacing": 0,
+    "react/jsx-no-duplicate-props": 1,
+    "react/jsx-no-undef": 1,
+    "react/jsx-sort-prop-types": 0,
+    "react/jsx-sort-props": 0,
+    "react/jsx-uses-react": 1,
+    "react/jsx-uses-vars": 1,
+    "react/jsx-indent-props": 0,
+    "react/no-danger": 0,
+    "react/no-did-mount-set-state": 1,
+    "react/no-did-update-set-state": 1,
+    "react/no-multi-comp": 0,
+    "react/no-unknown-property": 1,
+    "react/prop-types": 1,
+    "react/react-in-jsx-scope": 1,
+    "react/self-closing-comp": 0,
+    "react/sort-comp": [1, {
+      "order": [ "lifecycle", "everything-else", "render"]
+    }],
+    "react/jsx-wrap-multilines": 1
+  },
+  "plugins": [
+    "react"
+  ]
+}

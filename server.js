@@ -1,10 +1,25 @@
 import path from 'path';
 import express from 'express';
 import webpack from 'webpack';
+import { createServer } from 'http';
+import { ArgumentParser } from 'argparse';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 
 import config from './webpack.config.development';
+
+const parser = new ArgumentParser({
+  version: require('./package.json').version,
+  addHelp: true,
+});
+
+parser.addArgument(['-p', '--port'], {
+  help: "Port to run on",
+  type: Number,
+  defaultValue: 3000
+});
+
+const args = parser.parseArgs();
 
 const app = express();
 const compiler = webpack(config);
@@ -30,9 +45,11 @@ app.get('*', (req, res) => {
   });
 });
 
-app.listen(5000, (err) => {
+const server = createServer(app).listen(args.port, (err) => {
   if (!err) {
-    console.log(`Listening on http://localhost:5000`);
+    const { address, port } = server.address();
+    const host = address === '::' ? 'localhost' : address;
+    console.log(`Listening on http://${host}:${port}`);
   }
 });
 
