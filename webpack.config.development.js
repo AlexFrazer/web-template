@@ -8,6 +8,7 @@ export default merge(baseConfig, {
   devtool: 'inline-source-map',
   entry: [
     'webpack-hot-middleware/client?reload=true',
+    'babel-polyfill',
     './app/index.js'
   ],
   output: {

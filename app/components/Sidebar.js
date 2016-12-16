@@ -33,6 +33,6 @@ Sidebar.propTypes = {
   easing: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.array,
-  ]).isRequired,
+  ]),
   onChange: PropTypes.func,
 }
