@@ -1,4 +1,3 @@
-/* eslint-disable */
 import path from 'path';
 import express from 'express';
 import webpack from 'webpack';
@@ -58,4 +57,3 @@ const server = createServer(app).listen(args.port, (err) => {
 process.on('SIGTERM', () => {
   middleware.close();
 });
-/* eslint-disable */

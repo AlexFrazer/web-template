@@ -16,7 +16,7 @@ export default function Navbar({
         />
       </div>
       <div className={styles.content}>{title}</div>
-      <div className={styles.control}></div>
+      <div className={styles.control} />
     </div>
   );
 }

@@ -1,12 +1,13 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import { VelocityComponent } from 'velocity-react';
 
 import styles from 'app/styles/sidebar.scss';
 
 export default function Sidebar({
+  close,
   isOpen,
   width = 288,
-  easing = [.69,.04,.46,1.03],
+  easing = [0.69, 0.04, 0.46, 1.03],
   onChange = () => {},
 }) {
   return (
@@ -16,18 +17,18 @@ export default function Sidebar({
       complete={() => onChange(isOpen)}
       animation={{
         opacity: isOpen ? 1 : 0,
-        translateX: isOpen ? 0 : '-100%'
+        translateX: isOpen ? 0 : '-100%',
       }}
-      >
+    >
       <div style={{ width }} className={styles.container}>
+        <button className={styles.close} onClick={close} />
       </div>
     </VelocityComponent>
-  )
+  );
 }
 
 Sidebar.propTypes = {
   width: PropTypes.number,
-  open: PropTypes.func.isRequired,
   close: PropTypes.func.isRequired,
   isOpen: PropTypes.bool.isRequired,
   easing: PropTypes.oneOfType([
@@ -35,4 +36,4 @@ Sidebar.propTypes = {
     PropTypes.array,
   ]),
   onChange: PropTypes.func,
-}
+};
