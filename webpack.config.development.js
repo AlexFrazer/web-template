@@ -1,18 +1,18 @@
-import webpack from 'webpack';
-import merge from 'webpack-merge';
+const webpack = require('webpack');     // eslint-disable-line import/no-extraneous-dependencies
+const merge = require('webpack-merge'); // eslint-disable-line import/no-extraneous-dependencies
 
-import baseConfig from './webpack.config.base'
+const baseConfig = require('./webpack.config.base');
 
-export default merge(baseConfig, {
+module.exports = merge(baseConfig, {
   debug: true,
   devtool: 'inline-source-map',
   entry: [
     'webpack-hot-middleware/client?reload=true',
     'babel-polyfill',
-    './app/index.js'
+    './app/index.js',
   ],
   output: {
-    publicPath: '/'
+    publicPath: '/',
   },
   module: {
     loaders: [{
@@ -21,14 +21,14 @@ export default merge(baseConfig, {
         'style-loader',
         'css-loader?modules&sourceMap&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
         'sass-loader',
-      ]
-    }]
+      ],
+    }],
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('development')
-    })
-  ]
-})
+      'process.env.NODE_ENV': JSON.stringify('development'),
+    }),
+  ],
+});

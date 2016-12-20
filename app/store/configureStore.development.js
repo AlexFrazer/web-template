@@ -1,12 +1,11 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import thunk from 'redux-thunk';
 import createLogger from 'redux-logger';
 import { browserHistory } from 'react-router';
-import { routerMiddleware, push } from 'react-router-redux';
+import { routerMiddleware } from 'react-router-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
 
 import rootReducer from 'app/reducers';
-
-const actionCreators = { push };
 
 const logger = createLogger({
   level: 'info',
@@ -22,9 +21,10 @@ export default function configure(initialState) {
 
   if (module.hot) {
     module.hot.accept('../reducers', () => {
-      store.replaceReducer(require('../reducers'));
+      store.replaceReducer(require('../reducers')); // eslint-disable-line global-require
     });
   }
 
   return store;
 }
+/* eslint-disable */

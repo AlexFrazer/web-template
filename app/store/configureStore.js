@@ -1,3 +1,3 @@
 export default process.env.NODE_ENV === 'development'
-  ? require('./configureStore.development')
-  : require('./configureStore.production');
+  ? require('./configureStore.development') // eslint-disable-line global-require
+  : require('./configureStore.production'); // eslint-disable-line global-require

@@ -25,5 +25,7 @@ export default function MenuIcon({
 MenuIcon.propTypes = {
   height: PropTypes.number,
   width: PropTypes.number,
-  onClick: PropTypes.func
+  onClick: PropTypes.func,
+  style: PropTypes.object,
+  className: PropTypes.string,
 };
