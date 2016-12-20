@@ -11,13 +11,13 @@ export default function Sidebar({
 }) {
   return (
     <VelocityComponent
-        duration={200}
-        easing={easing}
-        complete={() => onChange(isOpen)}
-        animation={{
-          opacity: isOpen ? 1 : 0,
-          translateX: isOpen ? 0 : '-100%'
-        }}
+      duration={200}
+      easing={easing}
+      complete={() => onChange(isOpen)}
+      animation={{
+        opacity: isOpen ? 1 : 0,
+        translateX: isOpen ? 0 : '-100%'
+      }}
       >
       <div style={{ width }} className={styles.container}>
       </div>

@@ -18,5 +18,5 @@ export function toggle(): (dispatch: Function, getState: Function) => {} {
   return (dispatch, getState) => {
     const { isOpen } = getState().sidebar;
     dispatch({ type: isOpen ? CLOSE : OPEN });
-  }
+  };
 }

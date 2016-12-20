@@ -1,3 +1,4 @@
+/* eslint-disable */
 import path from 'path';
 import express from 'express';
 import webpack from 'webpack';
@@ -49,10 +50,12 @@ const server = createServer(app).listen(args.port, (err) => {
   if (!err) {
     const { address, port } = server.address();
     const host = address === '::' ? 'localhost' : address;
-    console.log(`Listening on http://${host}:${port}`);
+
+    console.log(`Listening on http://${host}:${port}`);  // eslint-disable-line
   }
 });
 
 process.on('SIGTERM', () => {
-  wdm.close();
-})
+  middleware.close();
+});
+/* eslint-disable */
