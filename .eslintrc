@@ -1,11 +1,6 @@
 {
   "extends": "airbnb",
   "parser": "babel-eslint",
-  "parserOptions": {
-    "ecmaFeatures": {
-      "jsx": true
-    }
-  },
   "env": {
     "es6": true,
     "node": true,
@@ -18,8 +13,13 @@
       }
     }
   },
+  "rules": {
+    "no-console": 1,
+    "arrow-parens": 0
+  },
   "plugins": [
     "react",
-    "import"
+    "import",
+    "async-await"
   ]
 }

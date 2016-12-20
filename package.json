@@ -35,6 +35,8 @@
     "eslint-formatter-pretty": "^1.1.0",
     "eslint-import-resolver-webpack": "^0.8.0",
     "eslint-loader": "^1.6.1",
+    "eslint-plugin-async-await": "^0.0.0",
+    "eslint-plugin-babel": "^4.0.0",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^2.2.3",
     "eslint-plugin-react": "^6.8.0",
@@ -55,13 +57,18 @@
   },
   "dependencies": {
     "bluebird": "^3.4.6",
+    "graphql": "^0.8.2",
+    "graphql-relay": "^0.4.4",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
     "react-redux": "^5.0.1",
+    "react-relay": "^0.10.0",
     "react-router": "^3.0.0",
     "react-router-redux": "^4.0.7",
     "redux": "^3.6.0",
     "redux-thunk": "^2.1.0",
+    "relay": "^0.8.0-1",
+    "relay-local-schema": "^0.5.5",
     "velocity-react": "^1.1.11"
   }
 }

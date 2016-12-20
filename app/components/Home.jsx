@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 
-export default function Home() {
-  return (
-    <div>
-      <h1>Welcome!</h1>
-    </div>
-  );
+export default class Home extends Component {
+  static propTypes = {
+    getIssues: PropTypes.func,
+  };
+
+  componentDidMount() {
+    this.props.getIssues();
+  }
+
+  render() {
+    return (
+      <div />
+    );
+  }
 }
