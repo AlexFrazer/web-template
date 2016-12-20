@@ -25,6 +25,7 @@ module.exports = merge(baseConfig, {
       loaders: [
         'style-loader',
         'css-loader?modules&sourceMap&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
+        'postcss-loader?sourceMap=inline',
         'sass-loader',
       ],
     }],
