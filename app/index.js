@@ -1,6 +1,4 @@
 /* eslint-disable react/jsx-filename-extension */
-import 'app/schemas';
-
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';

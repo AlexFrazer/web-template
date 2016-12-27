@@ -20,7 +20,11 @@ module.exports = {
   resolve: {
     extensions: ['', '.js', '.jsx', '.json', '.css', '.scss'],
     packageMains: ['webpack', 'browser', 'web', 'browserify', ['jam', 'main'], 'main'],
-    alias: { app: `${__dirname}/app` },
+    alias: {
+      app: `${__dirname}/app`,
+      atoms: `${__dirname}/patterns/atoms`,
+      molecules: `${__dirname}/patterns/molecules`,
+    },
   },
   plugins: [
     new webpack.ProvidePlugin({

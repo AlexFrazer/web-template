@@ -1,3 +1,5 @@
+import fetch from 'isomorphic-fetch';
+
 export const BASE_URL = 'https://api.github.com';
 
 export function checkStatus(response) {
