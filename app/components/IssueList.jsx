@@ -1,28 +1,26 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 
 import List from 'molecules/List';
 
-export default function IssueList({
-  getIssues,
-  issues: { data, isFetching },
-}) {
+type Props = {
+  getIssues: () => Promise<Issue[]>,
+  issues: {
+    data: Issue[],
+    isFetching: boolean,
+  },
+};
+
+export default function IssueList(props: Props) {
+  const { getIssues, issues: { isFetching, data } } = props;
   return (
     <List
       retrieve={getIssues}
       isFetching={isFetching}
-      data={Object.values(data)}
+      data={Array.from(data.values())}
     >
-      {issue => (<div>
+      {issue => (<div key={issue.id}>
         {issue.title}
       </div>)}
     </List>
   );
 }
-
-IssueList.propTypes = {
-  issues: PropTypes.shape({
-    data: PropTypes.array.isRequired,
-    isFetching: PropTypes.bool.isRequired,
-  }).isRequired,
-  getIssues: PropTypes.func.isRequired,
-};

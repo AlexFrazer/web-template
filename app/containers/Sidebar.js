@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import Sidebar from 'app/components/Sidebar';
-import * as Actions from 'app/actions/sidebar';
+import Sidebar from '../components/Sidebar';
+import * as Actions from '../actions/sidebar';
 
 export default connect(state => ({
   isOpen: state.sidebar.isOpen,

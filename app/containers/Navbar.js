@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import Navbar from 'app/components/Navbar';
-import { toggle } from 'app/actions/sidebar';
+import Navbar from '../components/Navbar';
+import { toggle } from '../actions/sidebar';
 
 const mapStateToProps = () => ({});
 

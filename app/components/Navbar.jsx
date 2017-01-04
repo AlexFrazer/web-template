@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 
-import MenuIcon from 'app/icons/Menu';
-import styles from 'app/styles/navbar.scss';
+import MenuIcon from '../icons/Menu';
+import styles from '../styles/navbar.scss';
 
 export default function Navbar({
   title = 'Alex Frazer',

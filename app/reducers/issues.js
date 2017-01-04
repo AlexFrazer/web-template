@@ -1,7 +1,7 @@
 import {
   REQUEST_ISSUES,
   RECEIVE_ISSUES,
-} from 'app/actions/issues';
+} from '../actions/issues';
 
 export const INITIAL_STATE = {
   data: new Map(),

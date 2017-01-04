@@ -1,4 +1,4 @@
-import { OPEN, CLOSE } from 'app/actions/sidebar';
+import { OPEN, CLOSE } from '../actions/sidebar';
 
 export const INITIAL_STATE = { isOpen: false };
 
