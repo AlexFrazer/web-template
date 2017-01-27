@@ -7,6 +7,7 @@
   "license": "MIT",
   "scripts": {
     "start": "NODE_ENV=development webpack-dev-server",
+    "lint": "eslint ./app",
     "build": "webpack --env production"
   },
   "devDependencies": {
@@ -43,5 +44,15 @@
     "redux-thunk": "^2.2.0",
     "velocity-react": "^1.2.1",
     "whatwg-fetch": "^2.0.2"
+  },
+  "optionalDependencies": {
+    "babel-eslint": "^7.1.1",
+    "eslint": "^3.14.1",
+    "eslint-config-airbnb": "^14.0.0",
+    "eslint-import-resolver-webpack": "latest",
+    "eslint-plugin-async-await": "latest",
+    "eslint-plugin-import": "latest",
+    "eslint-plugin-jsx-a11y": "^3.0.2",
+    "eslint-plugin-react": "^6.9.0"
   }
 }

@@ -1,3 +1,5 @@
 app/types/*
+app/index.tpl.html
 node_modules/*
-server.js
+__mocks__/**
+__tests__/**
