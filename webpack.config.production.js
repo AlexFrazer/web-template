@@ -1,34 +1,36 @@
-const webpack = require('webpack');      // eslint-disable-line import/no-extraneous-dependencies
-const merge = require('webpack-merge');  // eslint-disable-line import/no-extraneous-dependencies
+const webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-const baseConfig = require('./webpack.config.base');
-
-module.exports = merge(baseConfig, {
-  entry: [
-    'babel-polyfill',
-    './app/index',
-  ],
+module.exports = {
+  entry: {
+    js: './index.js'
+  },
   module: {
-    loaders: [{
+    rules: [{
       test: /\.s?css$/,
-      loaders: [
-        'style-loader',
-        'css-loader?sourceMap',
-        'postcss-loader?sourceMap=inline',
-        'sass-loader',
-      ],
-    }],
+      loader: ExtractTextPlugin.extract({
+        fallbackLoader: 'style-loader',
+        loader: 'css-loader!postcss-loader!sass-loader',
+      }),
+    }]
   },
   plugins: [
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production'),
     }),
-    new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin({
       compressor: {
         screw_ie8: true,
         warnings: false,
       },
+      output: {
+        comments: false,
+      },
     }),
+    new webpack.LoaderOptionsPlugin({
+      minimize: true,
+      debug: false,
+    }),
+    new ExtractTextPlugin('style-[hash].css'),
   ],
-});
+}

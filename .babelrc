@@ -1,17 +1,21 @@
 {
-  "presets": ["es2015", "stage-0", "react"],
+  "presets": [
+    [ "es2015", { "modules": false } ],
+    "stage-0",
+    "react"
+  ],
   "plugins": [
-    "add-module-exports",
-    "transform-decorators-legacy",
-    "transform-flow-strip-types"
+    ["transform-es2015-modules-commonjs", {
+      "spec": true
+    }]
   ],
   "env": {
     "production": {
-      "presets": ["react-optimize"],
-      "plugins": ["babel-plugin-dev-expression"]
+      "presets": ["react-optimize"]
     },
     "development": {
-      "presets": ["react-hmre"]
+      "presets": ["stage-2"],
+      "plugins": ["react-hot-loader/babel"]
     }
   }
 }
