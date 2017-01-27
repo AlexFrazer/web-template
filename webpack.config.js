@@ -17,6 +17,7 @@ const baseConfig = {
       'whatwg-fetch',
       'react',
       'react-dom',
+      'lodash',
       'react-router',
       'redux',
       'react-redux',

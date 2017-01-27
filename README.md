@@ -2,26 +2,44 @@
 
 A quick template I use for making front end applications.
 
-Everyone is completely free to borrow from, fork, or use this template. You can copy it freely.
-I put it on GitHub as a quick demonstration of how I would develop a modern web application.
+## Prerequisites
 
-This falls more under the "comprehensive" category than the "lightweight" category. Keep that in mind.
+- [Yarn](https://yarnpkg.com/en/docs/install)
+- [Node](https://nodejs.org/en/download/)
 
-## What it demonstrates
-
-- [Atomic Design](https://medium.com/@yejodido/atomic-components-managing-dynamic-react-components-using-atomic-design-part-1-5f07451f261f#.nm38cfqbw)
-- [Animations via Velocity](https://github.com/twitter-fabric/velocity-react)
-- [Async/Await](https://www.twilio.com/blog/2015/10/asyncawait-the-hero-javascript-deserved.html)
-
-## Resources I used
-
-
-## Usage
+## Getting Started
 
 ```
-# To run in development mode
-$ npm run dev
+# Install dependencies
+$ yarn install
 
-# To package the front-end for distribution
-$ npm run build
+# Running in development mode
+$ yarn start
+
+# Run a linter on the `app/` directory
+$ yarn run lint
+
+# Building for production
+# This will remove the `dist` directory
+$ yarn run build
+```
+
+## Walkthrough
+
+```
+app
+├── actions/          // Actions which will update the store.
+├── components/       // Presentational components
+├── containers/       // Bind presentational components with their "functionality".
+├── icons/            // .svg icons, you can also include a library if you want.
+├── reducers          // Decides how your application state will update.
+│   └── index.js        // Combine your reducers here.
+├── store/            // Configures the "storage" of app state. Also handles middlewares like loggers.
+├── styles            // Stylesheets.
+├── types             // Flow types.
+├── utils             // Miscellaneous re-usable functionality.
+│   └── api.js          // handling of API responses
+├── index.js          // Entry point of the application
+├── index.tpl.html    // Template for the final HTML page.
+└── routes.jsx        // Routing table.
 ```

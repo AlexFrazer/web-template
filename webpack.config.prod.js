@@ -1,4 +1,6 @@
+const path = require('path');
 const webpack = require('webpack');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
@@ -36,6 +38,9 @@ module.exports = {
       filename: 'style-[hash].css',
       disable: false,
       allChunks: true,
+    }),
+    new CleanWebpackPlugin(['dist'], {
+      root: path.resolve(__dirname),
     }),
   ],
 };
