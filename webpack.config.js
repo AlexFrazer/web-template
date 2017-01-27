@@ -5,7 +5,7 @@ const autoprefixer = require('autoprefixer');
 const HTMLPlugin = require('webpack-html-plugin');
 
 const devConfig = require('./webpack.config.dev');
-const prodConfig = require('./webpack.config.production');
+const prodConfig = require('./webpack.config.prod');
 
 const basePath = path.resolve(__dirname, 'app');
 
@@ -44,7 +44,7 @@ const baseConfig = {
       'node_modules',
       basePath,
     ],
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx'],
   },
   plugins: [
     new HTMLPlugin({
@@ -70,10 +70,10 @@ const baseConfig = {
         context: path.resolve(__dirname, 'app'),
       },
     }),
-  ]
+  ],
 };
 
 module.exports = (env = process.env.NODE_ENV || 'production') => {
   const isDev = env.toLowerCase() !== 'production';
   return merge(baseConfig, isDev ? devConfig : prodConfig);
-}
+};

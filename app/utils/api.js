@@ -10,9 +10,20 @@ export function checkStatus(response) {
   throw error;
 }
 
+export async function parseResponse(response) {
+  const text = await response.text();
+  try {
+    return JSON.parse(text);
+  } catch (e) {
+    return text;
+  }
+}
+
 export async function request(url, ...args) {
   const fixedUrl = url.startsWith('/') ? url.slice(1) : url;
   const response = await fetch(`${BASE_URL}/${fixedUrl}`, args);
+
   checkStatus(response);
-  return response.json();
+
+  return parseResponse(response);
 }

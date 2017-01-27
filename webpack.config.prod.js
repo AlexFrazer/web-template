@@ -3,16 +3,17 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   entry: {
-    js: './index.js'
+    js: './index.js',
   },
   module: {
     rules: [{
       test: /\.s?css$/,
       loader: ExtractTextPlugin.extract({
         fallbackLoader: 'style-loader',
-        loader: 'css-loader!postcss-loader!sass-loader',
+        loader: 'css-loader?modules!postcss-loader!sass-loader',
+        publicPath: '/dist',
       }),
-    }]
+    }],
   },
   plugins: [
     new webpack.DefinePlugin({
@@ -31,6 +32,10 @@ module.exports = {
       minimize: true,
       debug: false,
     }),
-    new ExtractTextPlugin('style-[hash].css'),
+    new ExtractTextPlugin({
+      filename: 'style-[hash].css',
+      disable: false,
+      allChunks: true,
+    }),
   ],
-}
+};
