@@ -1,6 +1,7 @@
 import React from 'react';
 
 import List from 'molecules/List';
+import Card from 'molecules/Card';
 
 type Props = {
   getIssues: () => Promise<Issue[]>,
@@ -18,9 +19,9 @@ export default function IssueList(props: Props) {
       isFetching={isFetching}
       data={Array.from(data.values())}
     >
-      {issue => (<div key={issue.id}>
-        {issue.title}
-      </div>)}
+      {issue => (<Card title={issue.title} key={issue.id}>
+        <div>{issue.title}</div>
+      </Card>)}
     </List>
   );
 }

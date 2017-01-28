@@ -39,6 +39,7 @@ const baseConfig = {
   resolve: {
     alias: {
       app: basePath,
+      atoms: path.resolve(__dirname, 'patterns/atoms'),
       molecules: path.resolve(__dirname, 'patterns/molecules'),
     },
     modules: [

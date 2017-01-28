@@ -1,0 +1,11 @@
+.container {
+  width: 100%;
+  display: inline-block;
+  position: relative;
+}
+
+.container::after {
+  content: '';
+  display: block;
+  padding-top: 56.25%;
+}
