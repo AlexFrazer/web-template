@@ -1,7 +1,7 @@
 import classnames from 'classnames';
 import React, { PropTypes } from 'react';
 
-import styles from 'atoms/button';
+import styles from 'atoms/button.scss';
 
 export default function Button({ label, onClick, className, ...props }) {
   return (

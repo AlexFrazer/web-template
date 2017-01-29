@@ -1,24 +1,25 @@
+import keyBy from 'lodash/keyBy';
 import {
   REQUEST_ISSUES,
   RECEIVE_ISSUES,
 } from '../actions/issues';
 
 export const INITIAL_STATE = {
-  data: new Map(),
+  data: {},
   isFetching: false,
 };
 
 export default function issues(state = INITIAL_STATE, action) {
-  switch (action.type) {
+  const { type, payload } = action;
+
+  switch (type) {
     case REQUEST_ISSUES:
       return { ...state, isFetching: true };
     case RECEIVE_ISSUES:
       return {
         ...state,
-        data: action.payload.reduce((total, issue) => {
-          total.set(issue.id, issue);
-          return total;
-        }, new Map()),
+        isFetching: false,
+        data: keyBy(payload, item => item.id),
       };
     default:
       return state;

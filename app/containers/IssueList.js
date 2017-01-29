@@ -5,7 +5,8 @@ import { getIssues } from '../actions/issues';
 import IssueList from '../components/IssueList';
 
 export default connect(state => ({
-  issues: state.issues,
+  isFetching: state.issues.isFetching,
+  issues: Object.values(state.issues.data),
 }), dispatch => ({
   getIssues: bindActionCreators(getIssues, dispatch),
 }))(IssueList);

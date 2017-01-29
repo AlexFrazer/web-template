@@ -19,6 +19,7 @@ const baseConfig = {
       'react-dom',
       'lodash',
       'react-router',
+      'react-router-redux',
       'redux',
       'react-redux',
       'velocity-react',

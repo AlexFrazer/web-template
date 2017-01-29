@@ -8,6 +8,11 @@ export default class List extends Component {
     retrieve: PropTypes.func.isRequired,
     children: PropTypes.func.isRequired,
     isFetching: PropTypes.bool.isRequired,
+    className: PropTypes.string,
+  };
+
+  static defaultProps = {
+    className: null,
   };
 
   componentDidMount() {
@@ -15,10 +20,10 @@ export default class List extends Component {
   }
 
   render() {
-    const { data, isFetching, children } = this.props;
+    const { data, isFetching, children, className } = this.props;
 
     return (
-      <div>
+      <div className={className}>
         {isFetching && <div />}
         {data.map(children)}
       </div>
