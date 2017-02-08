@@ -19,7 +19,6 @@ const baseConfig = {
       'react-dom',
       'lodash',
       'react-router',
-      'react-router-redux',
       'redux',
       'react-redux',
       'velocity-react',
@@ -55,6 +54,7 @@ const baseConfig = {
       filename: 'index.html',
       template: path.resolve(basePath, 'index.tpl.html'),
     }),
+    new webpack.NamedModulesPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       minChunks: Infinity,
