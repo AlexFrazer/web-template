@@ -1,6 +1,12 @@
 # Web Template
 
-A quick template I use for making front end applications.
+A template for building web applications.
+
+## Intentions
+
+- Keep up to date with most recent technologies
+- Keep bundle size as small as possible
+- Make generic and re-usable examples where possible.
 
 ## Prerequisites
 
