@@ -35,7 +35,8 @@ module.exports = {
       debug: false,
     }),
     new ExtractTextPlugin({
-      filename: 'style-[hash].css',
+      name: 'styles',
+      filename: 'styles.[hash].css',
       disable: false,
       allChunks: true,
     }),

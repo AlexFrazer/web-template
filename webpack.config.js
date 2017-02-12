@@ -17,11 +17,9 @@ const baseConfig = {
       'whatwg-fetch',
       'react',
       'react-dom',
-      'lodash',
       'react-router',
       'redux',
       'react-redux',
-      'velocity-react',
     ],
   },
   module: {
@@ -58,7 +56,7 @@ const baseConfig = {
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       minChunks: Infinity,
-      filename: 'vendor-[hash].js',
+      filename: 'vendor.[hash].js',
     }),
     new webpack.LoaderOptionsPlugin({
       options: {
