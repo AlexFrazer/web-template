@@ -1,20 +1,20 @@
 {
   "presets": [
-    [ "es2015", { "modules": false } ],
-    "stage-0",
+    ["env", {
+      "targets": {
+        "browsers": ["last 2 versions"]
+      },
+      "modules": false,
+      "useBuiltIns": true
+    }],
+    "stage-2",
     "react"
-  ],
-  "plugins": [
-    ["transform-es2015-modules-commonjs", {
-      "spec": true
-    }]
   ],
   "env": {
     "production": {
       "presets": ["react-optimize"]
     },
     "development": {
-      "presets": ["stage-2"],
       "plugins": ["react-hot-loader/babel"]
     }
   }

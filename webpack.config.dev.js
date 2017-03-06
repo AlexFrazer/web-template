@@ -42,10 +42,9 @@ module.exports = {
     }),
   ],
   devServer: {
-    hot: true,
     port: PORT,
-    inline: true,
-    contentBase: path.resolve(__dirname, 'dist'),
     publicPath: '/',
-  }
-}
+    historyApiFallback: true,
+    contentBase: path.resolve(__dirname, 'dist'),
+  },
+};
