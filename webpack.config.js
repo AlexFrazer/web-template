@@ -3,25 +3,16 @@ const webpack = require('webpack');
 const merge = require('webpack-merge');
 const autoprefixer = require('autoprefixer');
 const HTMLPlugin = require('webpack-html-plugin');
-
-const devConfig = require('./webpack.config.dev');
-const prodConfig = require('./webpack.config.prod');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const basePath = path.resolve(__dirname, 'app');
 
+const PORT = process.env.PORT || 3000;
+const isProduction = process.env.NODE_ENV === 'production';
+
 const baseConfig = {
   context: basePath,
-  entry: {
-    vendor: [
-      'babel-polyfill',
-      'whatwg-fetch',
-      'react',
-      'react-dom',
-      'react-router',
-      'redux',
-      'react-redux',
-    ],
-  },
   module: {
     rules: [{
       test: /\.jsx?$/,
@@ -37,8 +28,6 @@ const baseConfig = {
   resolve: {
     alias: {
       app: basePath,
-      atoms: path.resolve(__dirname, 'patterns/atoms'),
-      molecules: path.resolve(__dirname, 'patterns/molecules'),
     },
     modules: [
       'node_modules',
@@ -55,7 +44,7 @@ const baseConfig = {
     new webpack.NamedModulesPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
-      minChunks: Infinity,
+      minChunks: module => module.context && module.context.includes('node_modules'),
       filename: 'vendor.[hash].js',
     }),
     new webpack.LoaderOptionsPlugin({
@@ -74,7 +63,93 @@ const baseConfig = {
   ],
 };
 
-module.exports = (env = process.env.NODE_ENV || 'production') => {
-  const isDev = env.toLowerCase() !== 'production';
-  return merge(baseConfig, isDev ? devConfig : prodConfig);
-};
+const devConfig = merge(baseConfig, {
+  devtool: 'inline-source-map',
+  entry: {
+    js: [
+      'react-hot-loader/patch',
+      `webpack-dev-server/client?http://localhost:${PORT}`,
+      'webpack/hot/only-dev-server',
+      './index.jsx',
+    ],
+  },
+  module: {
+    rules: [{
+      test: /\.s?css$/,
+      use: [
+        'style-loader',
+        {
+          loader: 'css-loader',
+          options: {
+            modules: true,
+            sourceMap: true,
+            importLoaders: 1,
+            localIdentName: '[name]__[local]__[hash:base64:5]',
+          },
+        },
+        {
+          loader: 'postcss-loader',
+          options: { sourceMap: 'inline' },
+        },
+        'sass-loader',
+      ],
+    }],
+  },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('development'),
+    }),
+  ],
+  devServer: {
+    port: PORT,
+    historyApiFallback: true,
+    publicPath: baseConfig.output.publicPath,
+    contentBase: baseConfig.output.path,
+  },
+});
+
+const prodConfig = merge(baseConfig, {
+  entry: {
+    js: './index.jsx',
+  },
+  module: {
+    rules: [{
+      test: /\.s?css$/,
+      loader: ExtractTextPlugin.extract({
+        fallbackLoader: 'style-loader',
+        loader: 'css-loader?modules!postcss-loader!sass-loader',
+        publicPath: '/dist',
+      }),
+    }],
+  },
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('production'),
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      compressor: {
+        screw_ie8: true,
+        warnings: false,
+      },
+      output: {
+        comments: false,
+      },
+    }),
+    new webpack.LoaderOptionsPlugin({
+      minimize: true,
+      debug: false,
+    }),
+    new ExtractTextPlugin({
+      name: 'styles',
+      filename: 'styles.[hash].css',
+      disable: false,
+      allChunks: true,
+    }),
+    new CleanWebpackPlugin(['dist'], {
+      root: path.resolve(__dirname),
+    }),
+  ],
+});
+
+module.exports = isProduction ? prodConfig : devConfig;

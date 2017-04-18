@@ -1,33 +1,34 @@
-/* eslint-disable react/jsx-filename-extension */
+import 'babel-polyfill';
+
 import React from 'react';
-import ReactDOM from 'react-dom';
 import createHistory from 'history/createBrowserHistory';
 
-import Root from 'app/containers/Root';
-import configureStore from 'app/store/configureStore';
+import 'app/index.scss';
 
-const store = configureStore();
 const history = createHistory();
 
 const render = async Component => {
   const target = document.getElementById('root');
+  const { render: reactRender } = await import('react-dom');
+
   try {
     const { AppContainer } = await import('react-hot-loader');
-    ReactDOM.render(
+    reactRender(
       <AppContainer>
-        <Component store={store} history={history} />
+        <Component history={history} />
       </AppContainer>,
       target,
     );
   } catch (e) {
-    ReactDOM.render(
-      <Component store={store} history={history} />,
+    reactRender(
+      <Component history={history} />,
       target,
     );
   }
 };
 
-render(Root);
+import('app/containers/Root')
+  .then(({ default: App }) => render(App));
 
 if (module.hot) {
   module.hot.accept('app/containers/Root', async () => {
@@ -35,4 +36,3 @@ if (module.hot) {
     render(NextRoot);
   });
 }
-/* eslint-disable */

@@ -1,26 +1,40 @@
-@import 'app/styles/fonts';
+$background: #1C1D22;
+$font-color: #FFFFFF;
 
-.container {
-  @include primary-font();
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  overflow: hidden;
-  position: absolute;
-  flex-direction: column;
-  -webkit-font-smoothing: antialiased;
+@keyframes enter {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.header {
-  height: 48px;
+.container {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  color: $font-color;
+  min-width: 100vw;
+  min-height: 100vh;
+  position: absolute;
+  background-color: $background;
+  align-items: center;
+  justify-content: center;
 }
 
 .content {
-  flex: 1;
-  overflow: scroll;
-  padding: 0 50px;
-  position: relative;
-  margin-top: 20px;
+  display: flex;
+  font-size: 20px;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  animation-name: enter;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+  animation-duration: 0.5s;
 }
