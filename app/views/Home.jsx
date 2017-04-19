@@ -1,7 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router';
 
-import styles from 'app/styles/home.scss';
+import styles from 'app/styles/views/home.scss';
 
 type Props = {
   greeting: ?string,

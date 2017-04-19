@@ -1,0 +1,35 @@
+.container {
+  top: 50%;
+  left: 50%;
+  display: flex;
+  padding: 20px;
+  position: absolute;
+  border-radius: 5px;
+  flex-direction: column;
+  background-color: #CCCCCC;
+  transform: translate(-50%, -50%);
+}
+
+.count {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.action {
+  outline: none;
+  cursor: pointer;
+}
+
+.count {
+  color: white;
+  font: 700 50px 'Open Sans';
+}

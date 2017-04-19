@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styles from 'app/styles/app.scss';
+import styles from 'app/styles/layout/layout.scss';
 import Header from 'app/components/layout/Header';
 
 type Props = { children: any };
