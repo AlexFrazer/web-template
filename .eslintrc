@@ -3,7 +3,6 @@
   "parser": "babel-eslint",
   "env": {
     "es6": true,
-    "node": true,
     "browser": true
   },
   "settings": {
@@ -12,10 +11,6 @@
         "config": "webpack.config.js"
       }
     }
-  },
-  "rules": {
-    "no-console": 1,
-    "arrow-parens": 0
   },
   "plugins": [
     "react",

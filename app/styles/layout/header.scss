@@ -1,0 +1,17 @@
+$header-height: 46px;
+
+.container {
+  width: 100%;
+  display: flex;
+  padding: 0 20px;
+  align-items: center;
+  height: $header-height;
+
+  & > .link + .link {
+    margin-left: 15px;
+  }
+}
+
+.link.activeLink {
+  color: blue;
+}

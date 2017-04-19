@@ -1,6 +1,7 @@
 import React from 'react';
 
 import styles from 'app/styles/app.scss';
+import Header from 'app/components/layout/Header';
 
 type Props = { children: any };
 
@@ -9,6 +10,7 @@ export default function App({
 }: Props) {
   return (
     <div className={styles.container}>
+      <Header />
       <div className={styles.content}>
         {children}
       </div>

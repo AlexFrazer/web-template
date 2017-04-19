@@ -2,10 +2,12 @@ import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 
 import App from 'app/components/App';
-import HomePage from 'app/components/Home';
+import Home from 'app/components/Home';
+import Counter from 'app/components/Counter';
 
 export default (
   <Route path="/" component={App}>
-    <IndexRoute component={HomePage} />
+    <IndexRoute component={Home} />
+    <Route path="/counter" component={Counter} />
   </Route>
 );
