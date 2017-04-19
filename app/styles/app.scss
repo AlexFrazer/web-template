@@ -1,23 +1,8 @@
-$background: #1C1D22;
-$font-color: #FFFFFF;
-$header-height: 46px;
-
 .container {
+  width: 100%;
   display: flex;
   min-height: 100vh;
   flex-direction: column;
-}
-
-.header {
-  display: flex;
-  padding: 0 20px;
-  align-items: center;
-  height: $header-height;
-  border-bottom: 2px solid $background;
-
-  & > .link + .link {
-    margin-left: 15px;
-  }
 }
 
 .content {
