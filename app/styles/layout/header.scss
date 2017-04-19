@@ -6,12 +6,17 @@ $header-height: 46px;
   padding: 0 20px;
   align-items: center;
   height: $header-height;
+}
 
-  & > .link + .link {
+.link {
+  color: orange;
+  text-decoration: none;
+
+  &:not(:first-child) {
     margin-left: 15px;
   }
 }
 
-.link.activeLink {
+.link.active {
   color: blue;
 }

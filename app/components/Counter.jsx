@@ -11,7 +11,7 @@ export default class Counter extends Component {
   render() {
     return (
       <div>
-        {this.state.count}
+        <div>{this.state.count}</div>
         <button onClick={this.onIncrement}>Up</button>
       </div>
     );

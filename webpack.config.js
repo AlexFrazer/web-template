@@ -106,6 +106,8 @@ const devConfig = merge(baseConfig, {
   },
   devServer: {
     port: PORT,
+    hot: true,
+    inline: true,
     historyApiFallback: true,
     publicPath: baseConfig.output.publicPath,
     contentBase: baseConfig.output.path,
