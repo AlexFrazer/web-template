@@ -16,7 +16,10 @@
       "presets": ["react-optimize"]
     },
     "development": {
-      "plugins": ["react-hot-loader/babel"]
+      "plugins": [
+        "flow-runtime",
+        "react-hot-loader/babel"
+      ]
     }
   }
 }

@@ -1,9 +1,7 @@
 import React from 'react';
-import createHistory from 'history/createBrowserHistory';
+import { browserHistory as history } from 'react-router';
 
 import 'app/index.scss';
-
-const history = createHistory();
 
 const bootstrap = async Component => {
   const target = document.getElementById('root');

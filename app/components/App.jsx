@@ -1,22 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import styles from 'app/styles/app.scss';
 
-export default class App extends Component {
-  static propTypes = {
-  };
+type Props = { children: any };
 
-  state = { disabled: false };
-
-  toggleButton = open => this.setState({ disabled: !open });
-
-  render() {
-    return (
-      <div className={styles.container}>
-        <div className={styles.content}>
-          Test
-        </div>
+export default function App({
+  children,
+}: Props) {
+  return (
+    <div className={styles.container}>
+      <div className={styles.content}>
+        {children}
       </div>
-    );
-  }
+    </div>
+  );
 }

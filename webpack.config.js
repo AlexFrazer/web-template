@@ -119,10 +119,18 @@ const prodConfig = merge(baseConfig, {
   module: {
     rules: [{
       test: /\.s?css$/,
-      loader: ExtractTextPlugin.extract({
-        fallbackLoader: 'style-loader',
-        loader: 'css-loader?modules!postcss-loader!sass-loader',
-        publicPath: '/dist',
+      use: ExtractTextPlugin.extract({
+        fallback: 'style-loader',
+        use: [
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+            },
+          },
+          'postcss-loader',
+          'sass-loader'
+        ],
       }),
     }],
   },
@@ -143,12 +151,7 @@ const prodConfig = merge(baseConfig, {
       minimize: true,
       debug: false,
     }),
-    new ExtractTextPlugin({
-      name: 'styles',
-      filename: 'styles.[hash].css',
-      disable: false,
-      allChunks: true,
-    }),
+    new ExtractTextPlugin('styles.[hash].css'),
     new CleanWebpackPlugin(['dist'], {
       root: path.resolve(__dirname),
     }),
