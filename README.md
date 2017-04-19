@@ -34,18 +34,10 @@ $ yarn run build
 
 ```
 app
-├── actions/          // Actions which will update the store.
 ├── components/       // Presentational components
 ├── containers/       // Bind presentational components with their "functionality".
-├── icons/            // .svg icons, you can also include a library if you want.
-├── reducers          // Decides how your application state will update.
-│   └── index.js        // Combine your reducers here.
-├── store/            // Configures the "storage" of app state. Also handles middlewares like loggers.
-├── styles            // Stylesheets.
-├── types             // Flow types.
-├── utils             // Miscellaneous re-usable functionality.
-│   └── api.js          // handling of API responses
-├── index.js          // Entry point of the application
+├── index.scss        // Base styles. Could include fonts, etc.
+├── index.jsx         // Entry point of the application
 ├── index.tpl.html    // Template for the final HTML page.
 └── routes.jsx        // Routing table.
 ```

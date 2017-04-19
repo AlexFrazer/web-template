@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const autoprefixer = require('autoprefixer');
-const HTMLPlugin = require('webpack-html-plugin');
+const HTMLPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
@@ -18,6 +18,9 @@ const baseConfig = {
       test: /\.jsx?$/,
       use: ['babel-loader'],
       exclude: /node_modules/,
+    }, {
+      test: /\.hbs$/,
+      loader: 'handlebars-loader',
     }],
   },
   output: {
@@ -29,32 +32,28 @@ const baseConfig = {
     alias: {
       app: basePath,
     },
-    modules: [
-      'node_modules',
-      basePath,
-    ],
+    modules: ['node_modules', basePath],
     extensions: ['.js', '.jsx'],
   },
   plugins: [
     new HTMLPlugin({
+      cache: true,
       inject: 'body',
       filename: 'index.html',
-      template: path.resolve(basePath, 'index.tpl.html'),
+      title: 'Web Template',
+      minify: isProduction,
+      template: path.resolve(basePath, 'index.hbs'),
     }),
     new webpack.NamedModulesPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       minChunks: module => module.context && module.context.includes('node_modules'),
-      filename: 'vendor.[hash].js',
     }),
     new webpack.LoaderOptionsPlugin({
       options: {
         postcss: [
           autoprefixer({
-            browsers: [
-              'last 3 version',
-              'ie >= 10',
-            ],
+            browsers: ['last 2 version'],
           }),
         ],
         context: path.resolve(__dirname, 'app'),
@@ -67,6 +66,7 @@ const devConfig = merge(baseConfig, {
   devtool: 'inline-source-map',
   entry: {
     js: [
+      'babel-polyfill',
       'react-hot-loader/patch',
       `webpack-dev-server/client?http://localhost:${PORT}`,
       'webpack/hot/only-dev-server',
@@ -101,6 +101,9 @@ const devConfig = merge(baseConfig, {
       'process.env.NODE_ENV': JSON.stringify('development'),
     }),
   ],
+  performance: {
+    hints: false,
+  },
   devServer: {
     port: PORT,
     historyApiFallback: true,
@@ -111,7 +114,7 @@ const devConfig = merge(baseConfig, {
 
 const prodConfig = merge(baseConfig, {
   entry: {
-    js: './index.jsx',
+    js: ['babel-polyfill', './index.jsx'],
   },
   module: {
     rules: [{
