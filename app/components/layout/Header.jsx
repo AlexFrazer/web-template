@@ -1,4 +1,5 @@
 import React from 'react';
+import classnames from 'classnames';
 import { Link } from 'react-router';
 
 import styles from 'app/styles/layout/header.scss';
@@ -14,8 +15,11 @@ const NavLink = ({
 }) => (
   <Link
     to={to}
-    className={styles.link}
-    activeClassName={styles.active}
+    className={classnames({
+      [styles.link]: true,
+      [styles.title]: onlyActiveOnIndex && to === '/',
+    })}
+    activeClassName={to !== '/' ? styles.active : ''}
     onlyActiveOnIndex={onlyActiveOnIndex}
   >
     {label}
@@ -25,7 +29,7 @@ const NavLink = ({
 export default function Header() {
   return (
     <div className={styles.container}>
-      <NavLink to="/" label="Home" onlyActiveOnIndex />
+      <NavLink to="/" label="Web Template" onlyActiveOnIndex />
       <NavLink to="/counter" label="Counter" />
     </div>
   );
