@@ -1,3 +1,5 @@
+@import 'app/styles/_colors.scss';
+
 .container {
   top: 50%;
   left: 50%;
@@ -6,7 +8,6 @@
   position: absolute;
   border-radius: 5px;
   flex-direction: column;
-  background-color: #CCCCCC;
   transform: translate(-50%, -50%);
 }
 
@@ -21,15 +22,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 10px;
+  margin: 10px 0;
 }
 
-.action {
-  outline: none;
-  cursor: pointer;
+.action:not(:first-child) {
+  margin-left: 8px;
 }
 
 .count {
-  color: white;
+  color: $text-1;
   font: 700 50px 'Open Sans';
 }
