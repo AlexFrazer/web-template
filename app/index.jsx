@@ -3,7 +3,7 @@ import { browserHistory as history } from 'react-router';
 
 import 'app/index.scss';
 
-const bootstrap = async Component => {
+const bootstrap = async (Component) => {
   const target = document.getElementById('root');
   const { render } = await import('react-dom');
 
