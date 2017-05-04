@@ -1,4 +1,4 @@
-// flow-typed signature: 6f5ecc485a7aa2f0bad440727172dbf8
+// flow-typed signature: 580cfc36c06b57e2fdf8d09638c6067e
 // flow-typed version: <<STUB>>/clean-webpack-plugin_v^0.1.15/flow_v0.44.2
 
 /**
@@ -8,8 +8,8 @@
  *
  * Fill this stub out by replacing all the `any` types.
  *
- * Once filled out, we encourage you to share your work with the 
- * community by sending a pull request to: 
+ * Once filled out, we encourage you to share your work with the
+ * community by sending a pull request to:
  * https://github.com/flowtype/flow-typed
  */
 

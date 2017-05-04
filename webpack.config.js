@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const merge = require('webpack-merge');
 const autoprefixer = require('autoprefixer');
 const HTMLPlugin = require('html-webpack-plugin');
+const FaviconPlugin = require('favicons-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
@@ -45,6 +46,10 @@ const baseConfig = {
       filename: 'index.html',
       title: 'Web Template',
       template: path.resolve(basePath, 'index.hbs'),
+    }),
+    new FaviconPlugin({
+      inject: true,
+      logo: path.join(basePath, 'favicon.png'),
     }),
     new webpack.NamedModulesPlugin(),
     // https://webpack.js.org/guides/code-splitting-libraries/#implicit-common-vendor-chunk
@@ -100,14 +105,21 @@ const devConfig = merge(baseConfig, {
     }],
   },
   plugins: [
+    // https://webpack.js.org/guides/hmr-react/
     new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('development'),
+    }),
+    new webpack.LoaderOptionsPlugin({
+      minimize: true,
+      debug: true,
+      cache: false,
     }),
   ],
   performance: {
     hints: false,
   },
+  // https://webpack.js.org/guides/hmr-react/
   devServer: {
     port: PORT,
     hot: true,
@@ -144,15 +156,7 @@ const prodConfig = merge(baseConfig, {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production'),
     }),
-    new webpack.optimize.UglifyJsPlugin({
-      compressor: {
-        screw_ie8: true,
-        warnings: false,
-      },
-      output: {
-        comments: false,
-      },
-    }),
+    new webpack.optimize.UglifyJsPlugin(),
     new webpack.LoaderOptionsPlugin({
       minimize: true,
       debug: false,

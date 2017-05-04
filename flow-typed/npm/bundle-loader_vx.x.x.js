@@ -1,4 +1,4 @@
-// flow-typed signature: 5c3b7142c764ab4ca1ad9558b2b1ddf2
+// flow-typed signature: 76c7d691803808561a51ec166716e0d9
 // flow-typed version: <<STUB>>/bundle-loader_v^0.5.5/flow_v0.44.2
 
 /**
@@ -8,8 +8,8 @@
  *
  * Fill this stub out by replacing all the `any` types.
  *
- * Once filled out, we encourage you to share your work with the 
- * community by sending a pull request to: 
+ * Once filled out, we encourage you to share your work with the
+ * community by sending a pull request to:
  * https://github.com/flowtype/flow-typed
  */
 

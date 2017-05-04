@@ -1,4 +1,4 @@
-// flow-typed signature: 49a5d69a064b089d2c0dbdc63ce89eee
+// flow-typed signature: 78504c5f98105deee59d4d9833763525
 // flow-typed version: <<STUB>>/handlebars-loader_v^1.4.0/flow_v0.44.2
 
 /**
@@ -8,8 +8,8 @@
  *
  * Fill this stub out by replacing all the `any` types.
  *
- * Once filled out, we encourage you to share your work with the 
- * community by sending a pull request to: 
+ * Once filled out, we encourage you to share your work with the
+ * community by sending a pull request to:
  * https://github.com/flowtype/flow-typed
  */
 

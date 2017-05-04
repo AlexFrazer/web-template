@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import { browserHistory as history } from 'react-router';
 

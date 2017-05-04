@@ -1,4 +1,4 @@
-// flow-typed signature: a173df9b2ad479cfe96c7d7405eea800
+// flow-typed signature: a55e975bfb28c02e8971c3579fcedd96
 // flow-typed version: <<STUB>>/babel-preset-react-optimize_v^1.0.1/flow_v0.44.2
 
 /**
@@ -8,8 +8,8 @@
  *
  * Fill this stub out by replacing all the `any` types.
  *
- * Once filled out, we encourage you to share your work with the 
- * community by sending a pull request to: 
+ * Once filled out, we encourage you to share your work with the
+ * community by sending a pull request to:
  * https://github.com/flowtype/flow-typed
  */
 

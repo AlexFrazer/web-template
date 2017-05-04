@@ -1,4 +1,4 @@
-// flow-typed signature: 8737ca14f37fa6f25b952fbb4463a033
+// flow-typed signature: 1305f1ce979a8f651a0df2d02bb107c7
 // flow-typed version: <<STUB>>/webpack-merge_v^2.5.0/flow_v0.44.2
 
 /**
@@ -8,8 +8,8 @@
  *
  * Fill this stub out by replacing all the `any` types.
  *
- * Once filled out, we encourage you to share your work with the 
- * community by sending a pull request to: 
+ * Once filled out, we encourage you to share your work with the
+ * community by sending a pull request to:
  * https://github.com/flowtype/flow-typed
  */
 

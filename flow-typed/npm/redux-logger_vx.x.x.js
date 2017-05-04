@@ -1,4 +1,4 @@
-// flow-typed signature: b8be3ca358cc4f77b4c9dcd31be46e2c
+// flow-typed signature: a4a52a3794e00b19563759e931578ba5
 // flow-typed version: <<STUB>>/redux-logger_v^2.7.4/flow_v0.44.2
 
 /**
@@ -8,8 +8,8 @@
  *
  * Fill this stub out by replacing all the `any` types.
  *
- * Once filled out, we encourage you to share your work with the 
- * community by sending a pull request to: 
+ * Once filled out, we encourage you to share your work with the
+ * community by sending a pull request to:
  * https://github.com/flowtype/flow-typed
  */
 

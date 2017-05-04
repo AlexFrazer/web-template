@@ -1,4 +1,4 @@
-// flow-typed signature: edfd4d1029448942e835afc16cef4b32
+// flow-typed signature: 87ad6e028ef8de16588c20197b6af473
 // flow-typed version: <<STUB>>/react-hot-loader_v3.0.0-beta.6/flow_v0.44.2
 
 /**
@@ -8,8 +8,8 @@
  *
  * Fill this stub out by replacing all the `any` types.
  *
- * Once filled out, we encourage you to share your work with the 
- * community by sending a pull request to: 
+ * Once filled out, we encourage you to share your work with the
+ * community by sending a pull request to:
  * https://github.com/flowtype/flow-typed
  */
 

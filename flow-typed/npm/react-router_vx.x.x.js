@@ -1,4 +1,4 @@
-// flow-typed signature: 8b60dbafb6c39cff4e4531685f01661d
+// flow-typed signature: 5f89516077f3a7ef17c9993715e123d0
 // flow-typed version: <<STUB>>/react-router_v3/flow_v0.44.2
 
 /**
@@ -8,8 +8,8 @@
  *
  * Fill this stub out by replacing all the `any` types.
  *
- * Once filled out, we encourage you to share your work with the 
- * community by sending a pull request to: 
+ * Once filled out, we encourage you to share your work with the
+ * community by sending a pull request to:
  * https://github.com/flowtype/flow-typed
  */
 
