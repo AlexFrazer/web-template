@@ -2,7 +2,6 @@ const path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const autoprefixer = require('autoprefixer');
-const OfflinePlugin = require('offline-plugin');
 const HTMLPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -38,6 +37,8 @@ const baseConfig = {
     extensions: ['.js', '.jsx', '.json', '.scss', '.css'],
   },
   plugins: [
+    // Loads an HTML page as the "base" of the application
+    // You can pass options into this config and load them appropriately. See the `title` attribute
     new HTMLPlugin({
       cache: isProduction,
       inject: 'body',
@@ -45,17 +46,18 @@ const baseConfig = {
       title: 'Web Template',
       template: path.resolve(basePath, 'index.hbs'),
     }),
-    new OfflinePlugin(),
     new webpack.NamedModulesPlugin(),
+    // https://webpack.js.org/guides/code-splitting-libraries/#implicit-common-vendor-chunk
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       minChunks: module => module.context && module.context.includes('node_modules'),
     }),
+    // https://github.com/postcss/autoprefixer
     new webpack.LoaderOptionsPlugin({
       options: {
         postcss: [
           autoprefixer({
-            browsers: ['last 2 version'],
+            browsers: ['last 2 versions'],
           }),
         ],
         context: path.resolve(__dirname, 'app'),

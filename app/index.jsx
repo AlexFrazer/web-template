@@ -3,9 +3,7 @@ import { browserHistory as history } from 'react-router';
 
 import 'app/index.scss';
 
-require('offline-plugin/runtime').install();
-
-const bootstrap = async (Component) => {
+const bootstrap = async (Component: React.Element<*>) => {
   const target = document.getElementById('root');
   const { render } = await import('react-dom');
 
@@ -18,19 +16,16 @@ const bootstrap = async (Component) => {
       target,
     );
   } catch (e) {
-    render(
-      <Component history={history} />,
-      target,
-    );
+    render(<Component history={history} />, target);
   }
 };
 
-import('app/containers/Root')
+import('app/components/Root')
   .then(({ default: App }) => bootstrap(App));
 
 if (module.hot) {
-  module.hot.accept('app/containers/Root', async () => {
-    const { default: NextRoot } = await import('app/containers/Root');
+  module.hot.accept('app/components/Root', async () => {
+    const { default: NextRoot } = await import('app/components/Root');
     bootstrap(NextRoot);
   });
 }

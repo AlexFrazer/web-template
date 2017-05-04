@@ -3,14 +3,14 @@ import { Router } from 'react-router';
 
 import routes from 'app/routes';
 
-export default function Root({ history }) {
+type Props = {
+  history: {},
+};
+
+export default function Root({ history }: Props) {
   return (
     <Router history={history}>
       {routes}
     </Router>
   );
 }
-
-Root.propTypes = {
-  history: PropTypes.shape({}).isRequired,
-};
