@@ -3,6 +3,8 @@ import { browserHistory as history } from 'react-router';
 
 import 'app/index.scss';
 
+require('offline-plugin/runtime').install();
+
 const bootstrap = async (Component) => {
   const target = document.getElementById('root');
   const { render } = await import('react-dom');

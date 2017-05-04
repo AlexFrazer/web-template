@@ -1,23 +1,41 @@
 {
   "presets": [
-    ["env", {
-      "targets": {
-        "browsers": ["last 2 versions"]
-      },
-      "modules": false,
-      "useBuiltIns": true
-    }],
     "stage-2",
     "react"
   ],
   "plugins": ["dynamic-import-webpack"],
   "env": {
     "production": {
-      "presets": ["react-optimize"]
+      "presets": [
+        ["env", {
+          "targets": {
+            "browsers": ["last 2 versions"],
+            "uglify": true
+          },
+          "useBuiltIns": true
+        }],
+        "react-optimize",
+        "stage-2",
+        "react"
+      ],
+      "plugins": [
+        "babel-plugin-dev-expression",
+        "babel-plugin-transform-decorators-legacy"
+      ]
     },
     "development": {
+      "presets": [
+        ["env", {
+          "targets": {
+            "browsers": ["last 2 versions"]
+          },
+          "useBuiltIns": true
+        }]
+      ],
       "plugins": [
-        "flow-runtime",
+        "transform-decorators-legacy",
+        "transform-class-properties",
+        "transform-es2015-classes",
         "react-hot-loader/babel"
       ]
     }

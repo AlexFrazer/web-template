@@ -2,11 +2,13 @@ const path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const autoprefixer = require('autoprefixer');
+const OfflinePlugin = require('offline-plugin');
 const HTMLPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const basePath = path.resolve(__dirname, 'app');
+const distPath = path.join(__dirname, './dist');
 
 const PORT = process.env.PORT || 3000;
 const isProduction = process.env.NODE_ENV === 'production';
@@ -24,7 +26,7 @@ const baseConfig = {
     }],
   },
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: distPath,
     filename: '[name].bundle.js',
     publicPath: '/',
   },
@@ -33,17 +35,17 @@ const baseConfig = {
       app: basePath,
     },
     modules: ['node_modules', basePath],
-    extensions: ['.js', '.jsx'],
+    extensions: ['.js', '.jsx', '.json', '.scss', '.css'],
   },
   plugins: [
     new HTMLPlugin({
-      cache: true,
+      cache: isProduction,
       inject: 'body',
       filename: 'index.html',
       title: 'Web Template',
-      minify: isProduction,
       template: path.resolve(basePath, 'index.hbs'),
     }),
+    new OfflinePlugin(),
     new webpack.NamedModulesPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
@@ -131,7 +133,7 @@ const prodConfig = merge(baseConfig, {
             },
           },
           'postcss-loader',
-          'sass-loader'
+          'sass-loader',
         ],
       }),
     }],
@@ -154,7 +156,7 @@ const prodConfig = merge(baseConfig, {
       debug: false,
     }),
     new ExtractTextPlugin('styles.[hash].css'),
-    new CleanWebpackPlugin(['dist'], {
+    new CleanWebpackPlugin([distPath], {
       root: path.resolve(__dirname),
     }),
   ],
