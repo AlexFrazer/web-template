@@ -1,13 +1,13 @@
 # Web Template
 
-A template for building web applications.
+A template for building web applications. Uses React as the main front end framework.
 
 ## Intentions
 
-- Keep up with recent technologies.
-- Provide a base any application can work from; avoid opinionated decisions such as mobx vs redux.
-- Leave everything open to extensibility.
-- Put "best practices" in place, but do not assert them as the rule.
+- Keep up-to-date with most recent technologies
+- Provide a basic outline that anyone can work from regardless of their stack -- avoid making decisions such as mobx vs redux.
+- Keep a small and manageable bundle
+- No back end. This is mostly for front end engineers.
 
 ## Getting Started
 
@@ -22,6 +22,19 @@ $ yarn run dev
 # This will remove the `dist` directory
 $ yarn run build
 ```
+
+## What does it do?
+
+#### Building
+- Transpile js/jsx using [babel](https://www.npmjs.com/package/babel-core) and [webpack](https://www.npmjs.com/package/webpack)
+- Starts up a web server via [webpack-dev-server](https://www.npmjs.com/package/webpack-dev-server)
+- Makes a live-reloading preview via [react-hot-loader](https://github.com/gaearon/react-hot-loader)
+- Creates a minified, production-grade front end using webpack and code-splitting techniques.
+
+#### Pipeline
+- Builds an index.html file that will allow variables to be injected into it via [html-webpack-plugin](https://github.com/jantimon/html-webpack-plugin)
+- Create favicons for different platforms using [favicons-webpack-plugin](https://github.com/jantimon/favicons-webpack-plugin).
+- [Auto-prefixes](https://survivejs.com/webpack/styling/autoprefixing/) CSS and allows the use of CSS modules and SASS.
 
 ## Organizational Walkthrough
 
