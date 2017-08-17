@@ -1,0 +1,28 @@
+$size: 100px;
+
+.container {
+  width: $size;
+  height: $size;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+  border: 1px solid red;
+  border-radius: 5px;
+}
+
+.content {
+  flex: 1;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header {
+  height: 20px;
+}
+
+.footer {
+  height: 20px;
+}

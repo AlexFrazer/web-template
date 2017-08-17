@@ -1,8 +1,8 @@
-import path from 'path';
-import webpack from 'webpack';
-import merge from 'webpack-merge';
-import HTMLPlugin from 'html-webpack-plugin';
-import FaviconPlugin from 'favicons-webpack-plugin';
+let path;_e55‍.w('path',[["default",function(v){path=v}]]);let webpack;_e55‍.w('webpack',[["default",function(v){webpack=v}]]);let merge;_e55‍.w('webpack-merge',[["default",function(v){merge=v}]]);let HTMLPlugin;_e55‍.w('html-webpack-plugin',[["default",function(v){HTMLPlugin=v}]]);let FaviconPlugin;_e55‍.w('favicons-webpack-plugin',[["default",function(v){FaviconPlugin=v}]]);
+
+
+
+
 
 const srcPath = path.resolve(__dirname, './app');
 const distPath = path.resolve(__dirname, './dist');
