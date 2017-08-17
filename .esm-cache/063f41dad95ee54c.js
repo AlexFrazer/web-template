@@ -1,7 +1,7 @@
-import path from 'path';
-import webpack from 'webpack';
-import merge from 'webpack-merge';
-import HTMLPlugin from 'html-webpack-plugin';
+let path;_d95‍.w('path',[["default",function(v){path=v}]]);let webpack;_d95‍.w('webpack',[["default",function(v){webpack=v}]]);let merge;_d95‍.w('webpack-merge',[["default",function(v){merge=v}]]);let HTMLPlugin;_d95‍.w('html-webpack-plugin',[["default",function(v){HTMLPlugin=v}]]);
+
+
+
 
 const srcPath = path.resolve(__dirname, './app');
 const distPath = path.resolve(__dirname, './dist');
