@@ -1,13 +1,13 @@
 # Web Template
 
-A template for building web applications.
+A template for building web applications. Uses React as the main front end framework.
 
 ## Intentions
 
-- Keep up with recent technologies.
-- Provide a base any application can work from; avoid opinionated decisions such as mobx vs redux.
-- Leave everything open to extensibility.
-- Put "best practices" in place, but do not assert them as the rule.
+- Keep up-to-date with most recent technologies
+- Provide a basic outline that anyone can work from regardless of their stack -- avoid making decisions such as mobx vs redux.
+- Keep a small and manageable bundle
+- No back end. This is mostly for front end engineers.
 
 ## Getting Started
 
