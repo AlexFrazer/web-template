@@ -2,6 +2,7 @@ import path from 'path';
 import webpack from 'webpack';
 import merge from 'webpack-merge';
 import HTMLPlugin from 'html-webpack-plugin';
+import FaviconPlugin from 'favicons-webpack-plugin';
 
 const srcPath = path.resolve(__dirname, './app');
 const distPath = path.resolve(__dirname, './dist');
@@ -17,7 +18,23 @@ const baseConfig = {
     rules: [
       {
         test: /\.tsx?$/,
-        loader: 'awesome-typescript-loader',
+        use: 'awesome-typescript-loader',
+        exclude: /node_modules/,
+      },
+      {
+        test: /\.s?css$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'typings-for-css-modules-loader',
+            options: {
+              sass: true,
+              modules: true,
+              namedExport: true,
+            },
+          },
+          'sass-loader',
+        ],
       },
     ],
   },
@@ -37,6 +54,8 @@ const baseConfig = {
       template: path.join(srcPath, 'index.ejs'),
     }),
     new webpack.NamedModulesPlugin(),
+    new FaviconPlugin(path.join(srcPath, './favicon.png')),
+    new webpack.WatchIgnorePlugin([/css\.d\.ts$/]),
   ],
 };
 

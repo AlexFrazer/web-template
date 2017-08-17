@@ -1,4 +1,5 @@
-let path;_d95‍.w('path',[["default",function(v){path=v}]]);let webpack;_d95‍.w('webpack',[["default",function(v){webpack=v}]]);let merge;_d95‍.w('webpack-merge',[["default",function(v){merge=v}]]);let HTMLPlugin;_d95‍.w('html-webpack-plugin',[["default",function(v){HTMLPlugin=v}]]);
+let path;_e55‍.w('path',[["default",function(v){path=v}]]);let webpack;_e55‍.w('webpack',[["default",function(v){webpack=v}]]);let merge;_e55‍.w('webpack-merge',[["default",function(v){merge=v}]]);let HTMLPlugin;_e55‍.w('html-webpack-plugin',[["default",function(v){HTMLPlugin=v}]]);let FaviconPlugin;_e55‍.w('favicons-webpack-plugin',[["default",function(v){FaviconPlugin=v}]]);
+
 
 
 
@@ -17,7 +18,23 @@ const baseConfig = {
     rules: [
       {
         test: /\.tsx?$/,
-        loader: 'awesome-typescript-loader',
+        use: 'awesome-typescript-loader',
+        exclude: /node_modules/,
+      },
+      {
+        test: /\.s?css$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'typings-for-css-modules-loader',
+            options: {
+              sass: true,
+              modules: true,
+              namedExport: true,
+            },
+          },
+          'sass-loader',
+        ],
       },
     ],
   },
@@ -37,6 +54,8 @@ const baseConfig = {
       template: path.join(srcPath, 'index.ejs'),
     }),
     new webpack.NamedModulesPlugin(),
+    new FaviconPlugin(path.join(srcPath, './favicon.png')),
+    new webpack.WatchIgnorePlugin([/css\.d\.ts$/]),
   ],
 };
 
