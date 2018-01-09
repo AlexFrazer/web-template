@@ -1,43 +1,46 @@
 {
   "name": "web-template",
   "version": "1.0.0",
-  "description": "Basic template for web applications using tsx + webpack + react",
-  "main": "index.js",
+  "description": "A template for building web applications. Uses React as the main front end framework.",
+  "main": "webpack.config.js",
+  "dependencies": {
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-hot-loader": "^3.1.3",
+    "react-loadable": "^5.3.1",
+    "react-router-dom": "^4.2.2",
+    "react-spinners": "^0.2.5"
+  },
+  "devDependencies": {
+    "@types/react": "^16.0.34",
+    "@types/react-dom": "^16.0.3",
+    "@types/react-hot-loader": "^3.0.5",
+    "@types/react-loadable": "^5.3.0",
+    "@types/react-router-dom": "^4.2.3",
+    "@types/webpack": "^3.8.2",
+    "@types/webpack-env": "^1.13.3",
+    "awesome-typescript-loader": "^3.4.1",
+    "css-loader": "^0.28.8",
+    "html-webpack-plugin": "^2.30.1",
+    "style-loader": "^0.19.1",
+    "typescript": "^2.6.2",
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.10.0",
+    "webpack-merge": "^4.1.1"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "NODE_ENV=production node -r @std/esm ./node_modules/.bin/webpack",
-    "dev": "NODE_ENV=development node -r @std/esm ./node_modules/.bin/webpack-dev-server"
+    "dev": "NODE_ENV=development webpack-dev-server"
   },
-  "@std/esm": {
-    "await": true,
-    "esm": "all",
-    "cjs": true
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexFrazer/web-template.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "@std/esm": "^0.5.0",
-    "@types/react": "^16.0.2",
-    "@types/react-dom": "^15.5.3",
-    "@types/webpack": "^3.0.9",
-    "@types/webpack-env": "^1.13.0",
-    "awesome-typescript-loader": "^3.2.3",
-    "css-loader": "^0.28.5",
-    "favicons-webpack-plugin": "0.0.7",
-    "html-webpack-plugin": "^2.30.1",
-    "node-sass": "^4.5.3",
-    "sass-loader": "^6.0.6",
-    "style-loader": "^0.18.2",
-    "tslint-config-airbnb": "^5.2.1",
-    "typescript": "^2.4.2",
-    "typings-for-css-modules-loader": "^1.5.0",
-    "webpack": "^3.5.5",
-    "webpack-dev-server": "^2.7.1",
-    "webpack-merge": "^4.1.0"
+  "bugs": {
+    "url": "https://github.com/AlexFrazer/web-template/issues"
   },
-  "dependencies": {
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1"
-  }
+  "homepage": "https://github.com/AlexFrazer/web-template#readme"
 }

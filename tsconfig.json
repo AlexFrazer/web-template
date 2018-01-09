@@ -1,19 +1,20 @@
 {
   "compilerOptions": {
-    "baseUrl": "./",
-    "outDir": "./dist/",
-    "sourceMap": true,
-    "noImplicitAny": true,
-    "moduleResolution": "node",
-    "module": "commonjs",
     "target": "es5",
-    "allowJs": false,
+    "module": "esnext",
+    "lib": [
+      "es2015",
+      "dom",
+      "scripthost",
+      "es2015.promise"
+    ],
     "jsx": "react",
-    "lib": ["es2015", "dom"],
-    "paths": {
-      "app": ["./app/*"]
-    }
+    "strictNullChecks": false,
+    "moduleResolution": "node",
+    "typeRoots": [
+      "node_modules/@types",
+      "./types"
+    ],
+    "sourceRoot": "./src"
   },
-  "include": ["./app/**/*.ts", "./app/**/*.tsx"],
-  "exclude": ["./app/**/*.js"]
 }

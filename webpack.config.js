@@ -1,75 +1,69 @@
-import path from 'path';
-import webpack from 'webpack';
-import merge from 'webpack-merge';
-import HTMLPlugin from 'html-webpack-plugin';
-import FaviconPlugin from 'favicons-webpack-plugin';
+const path = require('path');
+const webpack = require('webpack');
+const merge = require('webpack-merge');
+const HTMLPlugin = require('html-webpack-plugin');
+const { dependencies } = require('./package.json');
 
-const srcPath = path.resolve(__dirname, './app');
-const distPath = path.resolve(__dirname, './dist');
-
-const isProd = process.env.NODE_ENV === 'production';
+const production = process.env.NODE_ENV === 'production';
+const srcPath = path.resolve(path.join(__dirname, './src'));
+const distPath = path.resolve(path.join(__dirname, './dist'));
 
 const baseConfig = {
+  entry: {
+    vendor: Object.keys(dependencies),
+  },
   output: {
     path: distPath,
-    filename: '[name].js',
+    filename: '[name].[hash].js',
+    chunkFilename: '[name].[chunkhash].js',
+    publicPath: '/',
+  },
+  module: {
+    rules: [
+      {
+        test: /\.css?$/,
+        include: srcPath,
+        use: ['style-loader', 'css-loader'],
+      },
+    ],
+  },
+  resolve: {
+    extensions: ['.js', '.json', '.ts', '.tsx', '.css', '.scss'],
+  },
+  plugins: [
+    new HTMLPlugin({
+      inject: 'body',
+      title: 'Web Template',
+      filename: 'index.html',
+      template: path.join(srcPath, 'index.ejs'),
+    }),
+    new webpack.NamedChunksPlugin(),
+    new webpack.NamedModulesPlugin(),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+      filename: 'vendor.[chunkhash].js',
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'manifest',
+    }),
+    new webpack.EnvironmentPlugin(['NODE_ENV']),
+    new webpack.WatchIgnorePlugin([/css\.d\.ts$/]),
+  ],
+};
+
+const prodConfig = merge(baseConfig, {
+  entry: {
+    app: path.join(srcPath, 'index.tsx'),
   },
   module: {
     rules: [
       {
         test: /\.tsx?$/,
         use: 'awesome-typescript-loader',
-        exclude: /node_modules/,
-      },
-      {
-        test: /\.s?css$/,
-        use: [
-          'style-loader',
-          {
-            loader: 'typings-for-css-modules-loader',
-            options: {
-              sass: true,
-              modules: true,
-              namedExport: true,
-            },
-          },
-          'sass-loader',
-        ],
+        include: srcPath,
       },
     ],
   },
-  resolve: {
-    alias: {
-      app: srcPath,
-    },
-    extensions: ['.d.ts', '.ts', '.tsx', '.js', '.json'],
-  },
-  plugins: [
-    new webpack.LoaderOptionsPlugin({
-      minimize: true,
-      debug: false,
-    }),
-    new HTMLPlugin({
-      inject: 'body',
-      template: path.join(srcPath, 'index.ejs'),
-    }),
-    new webpack.NamedModulesPlugin(),
-    new FaviconPlugin(path.join(srcPath, './favicon.png')),
-    new webpack.WatchIgnorePlugin([/css\.d\.ts$/]),
-  ],
-};
-
-const devConfig = merge(baseConfig, {
-  entry: path.join(srcPath, 'index.tsx'),
-  devServer: {
-    hot: true,
-    contentBase: distPath,
-  },
-  plugins: [new webpack.HotModuleReplacementPlugin()],
-});
-
-const prodConfig = merge(baseConfig, {
-  entry: path.join(srcPath, 'index.tsx'),
   plugins: [
     new webpack.optimize.UglifyJsPlugin({
       compress: {
@@ -79,4 +73,30 @@ const prodConfig = merge(baseConfig, {
   ],
 });
 
-module.exports = isProd ? prodConfig : devConfig;
+const devConfig = merge(baseConfig, {
+  devtool: 'cheap-eval-source-map',
+  entry: {
+    app: ['react-hot-loader/patch', path.join(srcPath, 'index.tsx')],
+  },
+  module: {
+    rules: [
+      {
+        test: /\.tsx?$/,
+        use: ['react-hot-loader/webpack', 'awesome-typescript-loader'],
+        include: srcPath,
+        exclude: /node_modules/,
+      },
+    ],
+  },
+  devServer: {
+    hot: true,
+    compress: true,
+    contentBase: distPath,
+    historyApiFallback: true,
+    port: process.env.PORT || 5000,
+    host: process.env.HOST || 'localhost',
+  },
+  plugins: [new webpack.HotModuleReplacementPlugin()],
+});
+
+module.exports = production ? prodConfig : devConfig;
