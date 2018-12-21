@@ -1,22 +1,14 @@
-import * as React from 'react';
-import { render } from 'react-dom';
-import { AppContainer } from 'react-hot-loader';
-
-async function bootstrap(Component: React.ComponentType) {
-  const target = document.getElementById('root');
+Promise.all([
+  import('react' /* webpackChunkName: "react" */),
+  import('react-hot-loader' /* webpackChunkName: "react-hot-loader" */),
+  import('react-dom' /* webpackChunkName: "react-dom" */),
+]).then(([React, { setConfig }, { render }]) => {
+  const App = React.lazy(() => import('./App' /* webpackChunkName: "App" */));
+  setConfig({ pureSFC: true });
   render(
-    <AppContainer>
-      <Component />
-    </AppContainer>,
-    target,
+    <React.Suspense fallback={<div />}>
+      <App />
+    </React.Suspense>,
+    document.getElementById('root'),
   );
-}
-
-import('./App' /* webpackChunkName: "App" */).then(({ default: App }) => bootstrap(App));
-
-if (module.hot) {
-  module.hot.accept('./App', async () => {
-    const { default: NextApp } = await import('./App');
-    bootstrap(NextApp);
-  });
-}
+});

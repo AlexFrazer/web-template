@@ -1,20 +1,12 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "module": "esnext",
-    "lib": [
-      "es2015",
-      "dom",
-      "scripthost",
-      "es2015.promise"
-    ],
+    "module": "commonjs",
+    "lib": ["dom", "es2015"],
     "jsx": "react",
-    "strictNullChecks": false,
+    "strict": true,
     "moduleResolution": "node",
-    "typeRoots": [
-      "node_modules/@types",
-      "./types"
-    ],
-    "sourceRoot": "./src"
-  },
+    "baseUrl": "./",
+    "esModuleInterop": true
+  }
 }

@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<App /> Should render the app. 1`] = `
+<React.Suspense
+  fallback={<div />}
+>
+  <ThemeProvider
+    theme={
+      Object {
+        "palette": Object {
+          "primary": "#1a1a1a",
+        },
+      }
+    }
+  >
+    <BrowserRouter>
+      <Switch>
+        <Route
+          component={
+            Object {
+              "$$typeof": Symbol(react.lazy),
+              "_ctor": [Function],
+              "_result": null,
+              "_status": -1,
+            }
+          }
+          exact={true}
+          path="/"
+        />
+        <Route
+          component={
+            Object {
+              "$$typeof": Symbol(react.lazy),
+              "_ctor": [Function],
+              "_result": null,
+              "_status": -1,
+            }
+          }
+          path="/todos"
+        />
+        <Redirect
+          push={false}
+          to="/"
+        />
+      </Switch>
+    </BrowserRouter>
+  </ThemeProvider>
+</React.Suspense>
+`;

@@ -1,28 +1,32 @@
 import * as React from 'react';
-import { Switch, Route, BrowserRouter } from 'react-router-dom';
-import { BounceLoader } from 'react-spinners';
-import Loadable from 'react-loadable';
+import { ThemeProvider } from 'emotion-theming';
+import { I18nextProvider } from 'react-i18next';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import i18n from 'src/i18n';
+import defaultTheme, { Theme } from 'src/theme';
+import ErrorBoundary from './ErrorBoundary';
 
-export default function App() {
+export interface Props {
+  readonly theme?: Theme;
+}
+
+const Home = React.lazy(() => import('./Home' /* webpackChunkName: "Home" */));
+
+export default function App({ theme = defaultTheme }: Props) {
   return (
-    <BrowserRouter>
-      <Switch>
-        <Route
-          exact
-          path="/about"
-          component={Loadable({
-            loader: () => import('./About' /* webpackChunkName: "About" */),
-            loading: () => <BounceLoader loading />,
-          })}
-        />
-        <Route
-          path="/"
-          component={Loadable({
-            loader: () => import('./Counter' /* webpackChunkName: "Counter" */),
-            loading: () => <BounceLoader loading />,
-          })}
-        />
-      </Switch>
-    </BrowserRouter>
+    <React.Suspense fallback={<div />}>
+      <ErrorBoundary>
+        <I18nextProvider i18n={i18n}>
+          <ThemeProvider theme={theme}>
+            <BrowserRouter>
+              <Switch>
+                <Route exact path="/" component={Home} />
+                <Redirect to="/" />
+              </Switch>
+            </BrowserRouter>
+          </ThemeProvider>
+        </I18nextProvider>
+      </ErrorBoundary>
+    </React.Suspense>
   );
 }
