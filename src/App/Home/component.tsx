@@ -9,6 +9,7 @@ export default function Home({ t }: Props) {
   return (
     <React.Suspense fallback={<div />}>
       <Header>{t('greeting')}</Header>
+      <Link to="/todos">{t('todos')}</Link>
     </React.Suspense>
   );
 }

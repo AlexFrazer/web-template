@@ -1,14 +1,17 @@
-Promise.all([
-  import('react' /* webpackChunkName: "react" */),
-  import('react-hot-loader' /* webpackChunkName: "react-hot-loader" */),
-  import('react-dom' /* webpackChunkName: "react-dom" */),
-]).then(([React, { setConfig }, { render }]) => {
-  const App = React.lazy(() => import('./App' /* webpackChunkName: "App" */));
-  setConfig({ pureSFC: true });
-  render(
-    <React.Suspense fallback={<div />}>
-      <App />
-    </React.Suspense>,
-    document.getElementById('root'),
-  );
-});
+import * as React from 'react';
+import { render } from 'react-dom';
+import { setConfig } from 'react-hot-loader';
+import createStore, { history } from './store';
+
+const store = createStore();
+
+const App = React.lazy(() => import('./App' /* webpackChunkName: "App" */));
+
+setConfig({ pureSFC: true });
+
+render(
+  <React.Suspense fallback={<div />}>
+    <App history={history} store={store} />
+  </React.Suspense>,
+  document.getElementById('root'),
+);

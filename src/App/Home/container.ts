@@ -1,4 +1,9 @@
-import { translate } from 'react-i18next';
-import component from './component';
+import { connect } from 'react-redux';
+import { compose, lifecycle } from 'recompose';
+import { withNamespaces } from 'react-i18next';
+import component, { Props } from './component';
 
-export default translate('home')(component);
+export default compose<Props, {}>(
+  connect(),
+  withNamespaces('home'),
+)(component);
